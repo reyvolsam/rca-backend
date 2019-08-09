@@ -53,21 +53,26 @@ class IndexController extends Controller
     public function store()
     {
         try{
-            $validator = Validator::make($this->request->all(), [
-                'enrollment'            => '|max:255',
-                'name'                  => '|max:255',
-                'grade_id'              => '',
-                'school_group_id'       => ''
-            ]);
+            $one_is_empty = false;
+            $form = $this->request->all();
+            if(count($form) > 0){
+                foreach ($form as $ke => $v) {
+                    if(empty($v)) $one_is_empty = true;
+                }
+            } else {
+                $one_is_empty = true;
+            }
 
+            if($one_is_empty){
+                $this->res['message'] = 'Por lo menos un campo debe tener un valor.';
+                $this->status_code = 200;
+            } else {
+                $rca_index = new RCAIndex;
+                //$rca_index->create($this->request->all());
 
-
-            $rca_index = new RCAIndex;
-            $rca_index->create($this->request->all());
-
-            $this->res['message'] = 'Estudiante creado correctamente.';
-            $this->status_code = 200;
-
+                $this->res['message'] = 'Estudiante creado correctamente.';
+                $this->status_code = 200;
+            }
         } catch(\Exception $e) {
             $this->res['message'] = 'Error en el sistema.'.$e;
             $this->status_code = 422;
