@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `rca_index`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rca_index` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `rgt_company` int(11) DEFAULT NULL,
+  `rgt_company` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `rgt_representative_name` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `rgt_dni` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `ret_representative_name` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `ret_dni` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `ret_phone` varchar(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `position` int(100) DEFAULT NULL,
-  `company_name` int(255) DEFAULT NULL,
+  `position` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `company_name` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `company_tax` varchar(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `social_security` varchar(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `contracted_by` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -91,4 +91,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-08 18:43:28
+-- Dump completed on 2019-08-09 19:02:53
